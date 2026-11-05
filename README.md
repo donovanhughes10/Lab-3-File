@@ -1,38 +1,58 @@
 Donovan Hughes — Portfolio
 
-Live site: https://donovanhughes10.github.io/Lab-3-File/
+Personal portfolio site for Donovan Hughes: business administration student, college pitcher at Alvernia University, and owner of Like Ya Ask Services.
 
-A single-file portfolio website (index.html) built for a general business / sales internship search. This project was created for the AI 101 portfolio assignment.
+The whole site is one static file, index.html. There is no build step and no framework.
 
-About
+What's on the page
+Hero: an interactive strike zone. Each of the nine cells is a highlight (Academic All-American, team captain, Student Athlete Award, crew leader, business owner, sales pitch competition, community service, Alvernia baseball, BotForge). Click a cell to see the details.
+About: a short introduction.
+Work history: a box-score style table of past and current jobs.
+School: Alvernia University, County College of Morris, and Shore Regional High School.
+Ventures: Like Ya Ask Services and BotForge.
+Community: captaincy and volunteer work.
+Contact: email link.
+Run it locally
 
-Donovan Hughes is a Business Administration student at Alvernia University and a member of the university's baseball team. This page presents his background, skills, and project status in a clean, accessible layout.
+Open index.html in any browser. No server is needed.
 
-Features
-About, Skills, and Project sections
-High-contrast, readable text
-Mobile-responsive layout that reflows on narrow screens
-Visible keyboard focus outlines for accessibility
-All CSS included in the one file, with no external code, forms, or dependencies
-No personal contact details published on the page
-Project Status
+To preview with a local server instead:
 
-The Project section is labeled "Status: Not yet added" and will be updated when a project is ready to showcase. No project has been invented as a placeholder.
+bash
+python3 -m http.server 8000
 
-Quality Checks
-Facts: All content traces back to approved résumé facts, with no invented credentials or metrics.
-Project status: The unfinished project section is honestly labeled.
-Mobile layout: A media query and flexible layout prevent horizontal scrolling on small screens.
-Keyboard navigation: A 3px gold focus outline shows on interactive elements.
-Privacy: No email, phone number, address, or forms appear on the page.
-Files
-File	Purpose
-index.html	The complete portfolio page (HTML and CSS in one file)
-README.md	This description
-Built With
+Then visit http://localhost:8000.
 
-HTML and CSS
+Deploy with GitHub Pages
+Push index.html and this README.md to the root of your repository.
+In the repository, go to Settings → Pages.
+Under Build and deployment, set Source to Deploy from a branch.
+Choose your main branch and the / (root) folder, then click Save.
+After a minute or two, the site is live at https://<your-username>.github.io/<repository-name>/.
 
-How to View
+If the repository is named <your-username>.github.io, the site is served at https://<your-username>.github.io/.
 
-Visit the live site link above, or download index.html and open it in any web browser.
+Edit your content
+
+All content lives in index.html:
+
+To change	Edit
+Colors	The :root block at the top of the <style> section
+Fonts	The Google Fonts <link> tag and the --display and --body variables
+Work history	The <tbody> inside the #work section
+Education	The three <article> blocks inside the #school section
+Ventures	The two <article> blocks inside the #ventures section
+Strike zone highlights	The items array in the <script> at the bottom, plus the matching button labels in the hero
+Contact email	The mailto: link in the #contact section
+
+Each strike zone button's position matches its entry in the items array, so keep the two lists in the same order.
+
+Tech notes
+Plain HTML, CSS, and a small amount of vanilla JavaScript.
+Fonts: Archivo and Public Sans, loaded from Google Fonts. Without a connection the page falls back to system fonts.
+Responsive down to phone widths.
+Keyboard accessible, with visible focus outlines.
+Respects the reduced-motion setting.
+Contact
+
+donovanhughes10@gmail.com
