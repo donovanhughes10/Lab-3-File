@@ -1,157 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Donovan Hughes — Portfolio</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Donovan Hughes — Student-athlete, business owner, builder</title>
+<meta name="description" content="Donovan Hughes is a business administration student, college pitcher at Alvernia University, and owner of Like Ya Ask Services.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #111318;
-    --card-bg: #1b1e26;
-    --text: #f2f2f2;
-    --muted: #b8bcc8;
-    --accent: #4da3ff;
-    --focus: #ffd54a;
-  }
+:root{
+  --chalk:#EDF0E9;
+  --ink:#12261A;
+  --grass:#1F4A31;
+  --stitch:#B3202A;
+  --dirt:#CBBF9F;
+  --mute:#4B5E52;
+  --display:"Archivo","Arial Narrow",Impact,sans-serif;
+  --body:"Public Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--chalk);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--stitch);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:1.5rem}
 
-  * { box-sizing: border-box; }
+/* top bar */
+.bar{gap:1rem;display:flex;justify-content:space-between;align-items:center;padding-block:1.25rem;font-weight:500;font-size:.95rem}
+.bar nav{display:flex;gap:1.5rem}
+.bar a{text-decoration:none;border-bottom:2px solid transparent}
+.bar a:hover{border-color:var(--stitch)}
+.bar .mark{font-family:var(--display);font-stretch:75%;font-weight:800;font-size:1.1rem}
 
-  body {
-    margin: 0;
-    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-  }
+/* hero */
+.hero{display:grid;grid-template-columns:1.15fr 1fr;gap:3rem;align-items:center;padding-block:3rem 5rem}
+h1{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(3rem,14vw,10.5rem);line-height:.82;letter-spacing:-.01em;text-transform:uppercase;color:var(--grass)}
+.hero .role{margin-top:1.75rem;font-size:1.25rem;max-width:30ch;line-height:1.45}
+.hero .cta{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.8rem 1.4rem;background:var(--ink);color:var(--chalk);text-decoration:none;font-weight:600;border-radius:2px}
+.btn:hover{background:var(--stitch)}
+.btn.alt{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn.alt:hover{background:var(--ink);color:var(--chalk)}
 
-  header {
-    padding: 2.5rem 1.5rem 1.5rem;
-    text-align: center;
-    border-bottom: 1px solid #2a2e3a;
-  }
+/* strike zone */
+.zone-wrap{justify-self:end;width:100%;max-width:440px}
+.zone{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);aspect-ratio:1;border:3px solid var(--ink);background:#fff}
+.zone button{position:relative;font:inherit;background:none;border:0;border-right:1px solid var(--dirt);border-bottom:1px solid var(--dirt);cursor:pointer;color:var(--ink);padding:.5rem;font-weight:600;font-size:.82rem;line-height:1.2;text-align:left;display:flex;align-items:flex-end;transition:background .15s}
+.zone button:nth-child(3n){border-right:0}
+.zone button:nth-child(n+7){border-bottom:0}
+.zone button:hover{background:#e4ead9}
+.zone button[aria-pressed="true"]{background:var(--grass);color:var(--chalk)}
+.zone button[aria-pressed="true"]::after{content:"";position:absolute;top:.6rem;right:.6rem;width:1.1rem;height:1.1rem;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 2px var(--stitch)}
+.zone button.landed::after{animation:land .45s cubic-bezier(.2,1.4,.4,1)}
+@keyframes land{from{transform:scale(3);opacity:0}to{transform:scale(1);opacity:1}}
+.plate{margin:.9rem auto 0;width:60%;height:1.1rem;background:#fff;border:2px solid var(--ink);clip-path:polygon(0 0,100% 0,100% 45%,50% 100%,0 45%);display:none}
+.readout{margin-top:1rem;min-height:7.5rem;border-left:4px solid var(--stitch);padding-left:1rem}
+.readout h2{font-family:var(--display);font-stretch:75%;font-weight:800;font-size:1.5rem;line-height:1.1;margin-bottom:.25rem}
+.readout p{color:var(--mute);max-width:44ch}
 
-  header h1 {
-    margin: 0 0 0.4rem;
-    font-size: 2rem;
-  }
+/* sections */
+section{padding:4.5rem 0;border-top:3px solid var(--ink)}
+h2.s{font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(2.5rem,6vw,4.25rem);line-height:.9;text-transform:uppercase;margin-bottom:2.5rem;color:var(--grass)}
+.about{display:grid;grid-template-columns:1fr 1.4fr;gap:3rem}
+.about p{max-width:60ch;font-size:1.15rem}
+.about p+p{margin-top:1rem}
 
-  header p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 1.05rem;
-  }
+/* box score */
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:1rem .75rem;vertical-align:top}
+thead th{font-weight:600;font-size:.9rem;color:var(--mute);border-bottom:3px solid var(--ink)}
+tbody tr{border-bottom:1px solid var(--dirt)}
+tbody td:first-child{font-weight:600;white-space:nowrap}
+td small{display:block;color:var(--mute);font-size:.95rem;margin-top:.15rem;max-width:52ch}
+td.when{white-space:nowrap;color:var(--mute)}
+caption{text-align:left;padding-bottom:1rem;color:var(--mute);font-size:.95rem}
 
-  main {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 1.5rem;
-  }
+/* education + ventures */
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.edu h3,.ven h3{font-family:var(--display);font-stretch:75%;font-weight:800;font-size:1.6rem;line-height:1.05}
+.edu .yr{font-weight:600;color:var(--stitch);margin:.35rem 0 .75rem}
+.edu ul{padding-left:1.1rem;color:var(--mute)}
+.edu li+li{margin-top:.2rem}
+.edu article{border-top:3px solid var(--ink);padding-top:1rem}
+.ven{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.ven article{background:var(--grass);color:var(--chalk);padding:2rem;border-radius:2px}
+.ven article p{margin-top:.75rem;max-width:44ch;color:#d6e2d6}
+.ven .tag{display:inline-block;margin-top:1.25rem;font-weight:600;font-size:.9rem;border-bottom:2px solid var(--stitch);padding-bottom:.1rem}
 
-  section {
-    background: var(--card-bg);
-    border-radius: 10px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
+/* contact */
+.contact{background:var(--ink);color:var(--chalk);border-top:0}
+.contact h2.s{color:var(--chalk)}
+.contact a.mail{font-family:var(--display);font-stretch:75%;font-weight:800;font-size:clamp(1.5rem,4.5vw,3rem);text-decoration:none;border-bottom:4px solid var(--stitch);word-break:break-all}
+.contact a.mail:hover{color:#fff}
+.contact p{margin-top:1.5rem;color:#c3d0c5;max-width:46ch}
+footer{background:var(--ink);color:#8fa294;padding:0 0 2rem;font-size:.9rem}
 
-  section h2 {
-    margin-top: 0;
-    font-size: 1.4rem;
-    border-bottom: 2px solid var(--accent);
-    display: inline-block;
-    padding-bottom: 0.25rem;
-  }
-
-  .skills-list {
-    list-style: none;
-    padding: 0;
-    margin: 1rem 0 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-  }
-
-  .skills-list li {
-    background: #262b38;
-    padding: 0.5rem 0.9rem;
-    border-radius: 6px;
-    font-size: 0.95rem;
-  }
-
-  .status-badge {
-    display: inline-block;
-    background: #3a2f0a;
-    color: #ffd54a;
-    border: 1px solid #ffd54a;
-    font-size: 0.85rem;
-    padding: 0.2rem 0.6rem;
-    border-radius: 999px;
-    margin-top: 0.5rem;
-  }
-
-  a {
-    color: var(--accent);
-  }
-
-  a:focus,
-  button:focus {
-    outline: 3px solid var(--focus);
-    outline-offset: 2px;
-  }
-
-  footer {
-    text-align: center;
-    color: var(--muted);
-    font-size: 0.85rem;
-    padding: 1.5rem;
-  }
-
-  @media (max-width: 480px) {
-    header h1 { font-size: 1.5rem; }
-    main { padding: 1rem; }
-    section { padding: 1.1rem; }
-  }
+@media (max-width:860px){
+  .hero,.about,.cols,.ven{grid-template-columns:1fr}
+  .zone-wrap{justify-self:start}
+  .bar nav{gap:.75rem;font-size:.85rem}
+  .bar{padding-inline:1rem}
+  table,tbody,tr,td{display:block}
+  thead{display:none}
+  tbody tr{padding:1rem 0}
+  td{padding:.1rem 0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .zone button.landed::after{animation:none}
+}
 </style>
 </head>
 <body>
-
-<header>
-  <h1>Donovan Hughes</h1>
-  <p>Business Administration Student &amp; Student-Athlete</p>
+<header class="wrap bar">
+  <span class="mark">DH</span>
+  <nav aria-label="Primary">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#school">School</a>
+    <a href="#ventures">Ventures</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
 <main>
-  <section aria-labelledby="about-heading">
-    <h2 id="about-heading">About</h2>
-    <p>
-      I'm a Business Administration student at Alvernia University and a member of the university's
-      baseball team, with prior study at County College of Morris where I served as team captain and
-      was a two-time Academic All-American. Alongside school and athletics, I've worked in customer-facing
-      and leadership roles including crew leader, banquet server, and equipment staff, and I competed in
-      the Susquehanna Sales Pitch Competition.
-    </p>
-  </section>
+<div class="wrap hero">
+  <div>
+    <h1>Donovan<br>Hughes</h1>
+    <p class="role">Business administration student, college pitcher, and owner of an exterior cleaning company in New Jersey.</p>
+    <div class="cta">
+      <a class="btn" href="#contact">Get in touch</a>
+      <a class="btn alt" href="#work">See my work history</a>
+    </div>
+  </div>
 
-  <section aria-labelledby="skills-heading">
-    <h2 id="skills-heading">Skills</h2>
-    <ul class="skills-list">
-      <li>Leadership</li>
-      <li>Customer Service</li>
-      <li>Team Management</li>
-      <li>Client Relations</li>
-    </ul>
-  </section>
+  <div class="zone-wrap">
+    <div class="zone" role="group" aria-label="Nine highlights laid out as a strike zone">
+      <button type="button" data-i="0">Two-time Academic All-American</button>
+      <button type="button" data-i="1">Team captain</button>
+      <button type="button" data-i="2">Student Athlete Award</button>
+      <button type="button" data-i="3">Crew leader</button>
+      <button type="button" data-i="4">Business owner</button>
+      <button type="button" data-i="5">Sales pitch competition</button>
+      <button type="button" data-i="6">Community service</button>
+      <button type="button" data-i="7">Alvernia baseball</button>
+      <button type="button" data-i="8">BotForge</button>
+    </div>
+    <div class="readout" aria-live="polite">
+      <h2 id="r-title"></h2>
+      <p id="r-text"></p>
+    </div>
+  </div>
+</div>
 
-  <section aria-labelledby="project-heading">
-    <h2 id="project-heading">Project</h2>
-    <p>Project details coming soon.</p>
-    <span class="status-badge">Status: Not yet added</span>
-  </section>
+<section id="about">
+  <div class="wrap about">
+    <h2 class="s">About</h2>
+    <div>
+      <p>I pitch for Alvernia University while finishing a Bachelor of Science in Business Administration. Before that I captained baseball teams at County College of Morris and Shore Regional High School.</p>
+      <p>Outside of school and the ballpark, I run Like Ya Ask Services, a pressure washing and soft washing company serving Monmouth and Ocean County. I'm also building BotForge, a dashboard that helps small businesses run day-to-day operations with AI.</p>
+      <p>Every job I've held has had the same core: show up, lead the crew, and talk straight with the customer.</p>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <h2 class="s">Work history</h2>
+    <table>
+      <caption>Jobs and roles, most recent first.</caption>
+      <thead><tr><th scope="col">Role</th><th scope="col">Where</th><th scope="col">When</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Equipment staff</td>
+          <td>Alvernia University Athletics<small>Manage laundry operations and organize athletic equipment.</small></td>
+          <td class="when">Current</td>
+        </tr>
+        <tr>
+          <td>Backserver / barback</td>
+          <td>Brothers Daley<small>Support bartenders during peak hours and keep bar setup and inventory in order.</small></td>
+          <td class="when">Seasonal, current</td>
+        </tr>
+        <tr>
+          <td>Banquet server</td>
+          <td>Meadow Wood Manor<small>Served guests at large events and helped with setup and breakdown.</small></td>
+          <td class="when">Fall and winter 2024</td>
+        </tr>
+        <tr>
+          <td>Crew leader</td>
+          <td>Saffioti Pool Cleaning Service<small>Led a work crew on daily service routes, managed task lists, held to tight schedules, and built relationships with clients.</small></td>
+          <td class="when">Summers 2022–2025</td>
+        </tr>
+        <tr>
+          <td>Customer service associate</td>
+          <td>Sea Bright Public Beach Umbrella Rental<small>Helped customers with rentals, setup, and service.</small></td>
+          <td class="when">Summer 2021</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="school">
+  <div class="wrap">
+    <h2 class="s">School</h2>
+    <div class="cols edu">
+      <article>
+        <h3>Alvernia University</h3>
+        <p class="yr">In progress</p>
+        <p>B.S., Business Administration</p>
+        <ul>
+          <li>Member, Alvernia baseball team</li>
+          <li>Competed in the Susquehanna Sales Pitch Competition</li>
+        </ul>
+      </article>
+      <article>
+        <h3>County College of Morris</h3>
+        <p class="yr">2025</p>
+        <p>A.S., Business Administration</p>
+        <ul>
+          <li>Baseball team captain for one year</li>
+          <li>Two-time Academic All-American</li>
+        </ul>
+      </article>
+      <article>
+        <h3>Shore Regional High School</h3>
+        <p class="yr">2023</p>
+        <p>High school diploma</p>
+        <ul>
+          <li>Varsity football, baseball, and basketball</li>
+          <li>Baseball team captain</li>
+          <li>Robert E. Feeney Student Athlete Award</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="ventures">
+  <div class="wrap">
+    <h2 class="s">Ventures</h2>
+    <div class="ven">
+      <article>
+        <h3>Like Ya Ask Services</h3>
+        <p>Pressure washing and soft washing for homes and businesses in Monmouth and Ocean County, New Jersey. I handle the quotes, the work, and the follow-up.</p>
+        <span class="tag">Owner-operator</span>
+      </article>
+      <article>
+        <h3>BotForge</h3>
+        <p>An AI-powered operations dashboard that lets many businesses, in any industry, run on one platform. I'm building it to sell or license.</p>
+        <span class="tag">In development</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="community">
+  <div class="wrap about">
+    <h2 class="s">Community</h2>
+    <div>
+      <p>I captained County College of Morris baseball and served as the link between the players and the coaching staff.</p>
+      <p>I've volunteered at the St. Michael's Church turkey drive, the County College of Morris turkey giveaway, and County College of Morris athletic events.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2 class="s">Contact</h2>
+    <a class="mail" href="mailto:donovanhughes10@gmail.com">donovanhughes10@gmail.com</a>
+    <p>Email me about a pressure washing quote, an internship, or a project you'd like help with.</p>
+  </div>
+</section>
 </main>
 
-<footer>
-  &copy; 2026 Donovan Hughes
-</footer>
+<footer class="contact"><div class="wrap">© 2026 Donovan Hughes</div></footer>
 
+<script>
+(function(){
+  var items=[
+    ["Two-time Academic All-American","Earned the honor twice while playing baseball at County College of Morris."],
+    ["Team captain","Captained County College of Morris baseball for a year and Shore Regional baseball before that. Acted as the liaison between players and coaches."],
+    ["Robert E. Feeney Student Athlete Award","Awarded at Shore Regional High School, where I played varsity football, baseball, and basketball."],
+    ["Crew leader","Led a pool cleaning crew for four summers, 2022 to 2025, covering daily routes on tight schedules."],
+    ["Business owner","Run Like Ya Ask Services, a pressure washing and soft washing company in Monmouth and Ocean County, NJ."],
+    ["Sales pitch competition","Competed in the Susquehanna Sales Pitch Competition as an Alvernia business student."],
+    ["Community service","Volunteer at church and college turkey drives and giveaways, and at county college athletic events."],
+    ["Alvernia baseball","Pitcher on the Alvernia University team, and on the equipment staff for Alvernia Athletics."],
+    ["BotForge","Building an AI-powered operations dashboard for businesses across industries."]
+  ];
+  var btns=[].slice.call(document.querySelectorAll('.zone button'));
+  var t=document.getElementById('r-title'),x=document.getElementById('r-text');
+  function pick(i,animate){
+    btns.forEach(function(b,j){
+      b.setAttribute('aria-pressed',j===i?'true':'false');
+      b.classList.remove('landed');
+    });
+    if(animate){void btns[i].offsetWidth;btns[i].classList.add('landed');}
+    t.textContent=items[i][0];x.textContent=items[i][1];
+  }
+  btns.forEach(function(b,i){b.addEventListener('click',function(){pick(i,true)});});
+  pick(4,true);
+})();
+</script>
 </body>
 </html>
